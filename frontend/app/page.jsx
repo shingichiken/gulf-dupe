@@ -51,33 +51,44 @@ export default function GulfDupeHome() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
-      <header className="bg-white border-b border-slate-200 py-5 px-6">
-        <div className="max-w-5xl mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-extrabold tracking-tight text-emerald-700">
-            GulfDupe <span className="text-slate-400 font-normal text-sm">| GCC Smart Saver</span>
-          </h1>
-          <span className="text-xs bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full font-medium">
-            UAE • Qatar • KSA • Kuwait
-          </span>
+    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-emerald-500 selection:text-white">
+      {/* Navigation Header */}
+      <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 py-4 px-6">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl font-black tracking-tighter bg-gradient-to-r from-emerald-400 to-teal-200 bg-clip-text text-transparent">
+              GulfDupe
+            </span>
+            <span className="text-xs bg-slate-800 text-emerald-400 px-3 py-1 rounded-full font-semibold border border-slate-700">
+              GCC Edition 🇦🇪 🇶🇦 🇸🇦 🇰🇼
+            </span>
+          </div>
+          <div className="text-xs text-slate-400 hidden sm:block">
+            Smart AI Price Arbitrage & Alternatives
+          </div>
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-6 py-12">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Find the Exact Look & Quality for Less
-          </h2>
-          <p className="text-slate-600">
-            Search by product name, paste any expensive store link, or upload a screenshot to find cheaper GCC alternatives.
+      {/* Hero Section */}
+      <main className="max-w-5xl mx-auto px-6 pt-16 pb-24">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
+            Find Designer Quality <br/>
+            <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
+              Without the Luxury Tax.
+            </span>
+          </h1>
+          <p className="text-slate-400 text-base md:text-lg">
+            Search by item name, paste any store URL (Ounass, Sephora, Farfetch), or upload a photo to discover affordable GCC alternatives instantly.
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <div className="flex gap-2 mb-5 border-b border-slate-100 pb-3">
+        {/* Search Interface Card */}
+        <div className="bg-slate-800/60 border border-slate-700/80 p-6 md:p-8 rounded-3xl shadow-2xl backdrop-blur-xl">
+          <div className="flex gap-2 mb-6 border-b border-slate-700 pb-4 overflow-x-auto">
             {[
               { id: 'name', label: '🔍 Product Name' },
-              { id: 'url', label: '🔗 Paste Link (URL)' },
+              { id: 'url', label: '🔗 Store URL' },
               { id: 'image', label: '📸 Upload Photo' },
             ].map((tab) => (
               <button
@@ -88,10 +99,10 @@ export default function GulfDupeHome() {
                   setTextInput('');
                   setError('');
                 }}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition ${
+                className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${
                   activeTab === tab.id
-                    ? 'bg-emerald-600 text-white'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? 'bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20'
+                    : 'bg-slate-900/50 text-slate-400 hover:bg-slate-700 hover:text-white'
                 }`}
               >
                 {tab.label}
@@ -106,8 +117,8 @@ export default function GulfDupeHome() {
                 required
                 value={textInput}
                 onChange={(e) => setTextInput(e.target.value)}
-                placeholder="e.g., Creed Aventus, Dyson Airwrap, Loewe Basket Bag..."
-                className="flex-1 border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                placeholder="e.g., Tom Ford Oud Wood, Dyson Airwrap, Loewe Basket..."
+                className="flex-1 bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition"
               />
             )}
 
@@ -117,8 +128,8 @@ export default function GulfDupeHome() {
                 required
                 value={textInput}
                 onChange={(e) => setTextInput(e.target.value)}
-                placeholder="Paste link from Ounass, Sephora, Farfetch, Amazon..."
-                className="flex-1 border border-slate-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                placeholder="Paste product link from Ounass, Sephora, Namshi, Amazon..."
+                className="flex-1 bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition"
               />
             )}
 
@@ -128,61 +139,75 @@ export default function GulfDupeHome() {
                 accept="image/*"
                 required
                 onChange={(e) => setImageFile(e.target.files[0])}
-                className="flex-1 border border-dashed border-slate-300 rounded-xl px-4 py-2.5 bg-slate-50"
+                className="flex-1 bg-slate-900 border border-dashed border-slate-700 rounded-2xl px-5 py-3.5 text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-bold file:bg-emerald-500 file:text-slate-950 hover:file:bg-emerald-400 cursor-pointer transition"
               />
             )}
 
             <button
               type="submit"
               disabled={loading}
-              className="bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-3 rounded-xl transition disabled:opacity-50"
+              className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-8 py-4 rounded-2xl transition shadow-lg shadow-emerald-500/10 disabled:opacity-50 cursor-pointer whitespace-nowrap"
             >
-              {loading ? 'Scanning GCC Stores...' : 'Find Dupes'}
+              {loading ? (
+                <span className="flex items-center gap-2">
+                  <svg className="animate-spin h-5 w-5 text-slate-950" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                  >
+                  Scanning GCC Markets...
+                </span>
+              ) : (
+                'Find Dupes 🚀'
+              )}
             </button>
           </form>
 
-          {error && <p className="text-red-600 text-sm mt-3">{error}</p>}
+          {error && <p className="text-rose-400 text-sm mt-3 font-medium">⚠️ {error}</p>}
         </div>
 
+        {/* Results Section */}
         {results && (
-          <div className="mt-10">
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 flex justify-between items-center">
+          <div className="mt-12 animate-fadeIn">
+            {/* Original Item Header */}
+            <div className="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div>
-                <span className="text-xs uppercase font-bold text-amber-700">Original Item Detected</span>
-                <h3 className="text-lg font-bold text-slate-900">{results.originalProduct.name}</h3>
+                <span className="text-xs uppercase font-extrabold tracking-widest text-emerald-400 block mb-1">
+                  Original Reference Item
+                </span>
+                <h3 className="text-xl font-bold text-white">{results.originalProduct.name}</h3>
               </div>
-              <div className="text-right">
-                <span className="text-xs text-slate-500 block">Typical GCC Retail</span>
-                <span className="text-lg font-bold text-red-600 line-through">
+              <div className="text-left md:text-right bg-slate-900/60 px-5 py-3 rounded-xl border border-slate-700/50 w-full md:w-auto">
+                <span className="text-xs text-slate-400 block">Est. Luxury Retail</span>
+                <span className="text-xl font-black text-rose-400 line-through">
                   {results.originalProduct.estimatedOriginalPrice}
                 </span>
               </div>
             </div>
 
-            <h4 className="text-xl font-bold mb-4">Top Cheaper Alternatives in the Gulf</h4>
-            <div className="grid md:grid-cols-2 gap-5">
+            <h4 className="text-2xl font-extrabold mb-6 text-white">Recommended Gulf Alternatives</h4>
+            <div className="grid md:grid-cols-2 gap-6">
               {results.dupes.map((dupe, index) => (
                 <div
                   key={index}
-                  className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between"
+                  className="bg-slate-800/40 border border-slate-700/80 hover:border-slate-600 rounded-3xl p-6 transition-all flex flex-col justify-between shadow-xl"
                 >
                   <div>
-                    <div className="flex justify-between items-start mb-2">
-                      <span className="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-md">
-                        Save ~{dupe.savingsPercentage}
+                    <div className="flex justify-between items-start mb-3">
+                      <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-black px-3 py-1 rounded-lg">
+                        SAVE {dupe.savingsPercentage}
                       </span>
-                      <span className="text-xs font-semibold text-slate-500 uppercase">
-                        Available on {dupe.store}
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">
+                        {dupe.store}
                       </span>
                     </div>
-                    <h5 className="text-lg font-bold text-slate-900 mb-1">{dupe.name}</h5>
-                    <p className="text-sm text-slate-600 mb-4">{dupe.whyItsAGoodDupe}</p>
+                    <h5 className="text-lg font-bold text-white mb-2">{dupe.name}</h5>
+                    <p className="text-sm text-slate-300 leading-relaxed mb-6">{dupe.whyItsAGoodDupe}</p>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <div className="pt-4 border-t border-slate-700/60 flex items-center justify-between">
                     <div>
-                      <span className="text-xs text-slate-400 block">Est. Price</span>
-                      <span className="text-xl font-extrabold text-emerald-700">
+                      <span className="text-xs text-slate-400 block">GCC Deal Price</span>
+                      <span className="text-2xl font-black text-emerald-400">
                         {dupe.estimatedPrice}
                       </span>
                     </div>
@@ -190,9 +215,9 @@ export default function GulfDupeHome() {
                       href={dupe.affiliateUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition"
+                      className="bg-white hover:bg-slate-200 text-slate-950 text-sm font-extrabold px-6 py-3 rounded-xl transition shadow-md"
                     >
-                      View Deal on {dupe.store} →
+                      Shop on {dupe.store} →
                     </a>
                   </div>
                 </div>
