@@ -82,7 +82,7 @@ app.post('/api/search/name', async (req, res) => {
     }`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.8-flash',
+      model: 'ai.models.generateContent',
       contents: prompt,
     });
 
@@ -127,7 +127,7 @@ app.post('/api/search/url', async (req, res) => {
     }`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.8-flash',
+      model: 'ai.models.generateContent',
       contents: prompt,
     });
 
@@ -177,7 +177,7 @@ app.post('/api/search/image', upload.single('image'), async (req, res) => {
     }`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.8-flash',
+      model: 'ai.models.generateContent',
       contents: [imagePart, prompt],
     });
 
